@@ -28,24 +28,17 @@ public class Line {
     }
 
     private void generateBridge(BooleanGenerator booleanGenerator, int bridgeIndex) {
-        Bridge randomBridge = generateRandomBridge(booleanGenerator);
-        if (!hasBridgeInLeftOrRight(bridgeIndex)) {
+        Bridge randomBridge = Bridge.from(booleanGenerator.generate());
+        if (canMakeBridge(bridgeIndex)) {
             bridges.set(bridgeIndex, randomBridge);
         }
     }
 
-    private Bridge generateRandomBridge(BooleanGenerator booleanGenerator) {
-        if (booleanGenerator.generate()) {
-            return Bridge.EXIST;
-        }
-        return Bridge.EMPTY;
-    }
-
-    private boolean hasBridgeInLeftOrRight(int bridgeIndex) {
+    private boolean canMakeBridge(int bridgeIndex) {
         if (bridgeIndex == LEFTMOST_INDEX && bridges.size() == 1) {
-            return false;
+            return true;
         }
-        return hasBridgeInLeft(bridgeIndex) || hasBridgeInRight(bridgeIndex);
+        return !hasBridgeInLeft(bridgeIndex);
     }
 
     public Boolean hasBridgeInLeft(int position) {
