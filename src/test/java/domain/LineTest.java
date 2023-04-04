@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import util.FalseGenerator;
+import util.TestGenerator;
 import util.TrueGenerator;
 
 class LineTest {
@@ -60,9 +61,12 @@ class LineTest {
         @DisplayName("왼쪽에 연결된 다리가 있는지")
         void hasBridgeInLeftTest() {
             //given
-            Line line = new Line(List.of(Bridge.EXIST, Bridge.EMPTY));
+            Line line = Line.from(3);
 
             //when
+            line.generate(new TestGenerator(List.of(true, false)));
+
+            //then
             assertThat(line.hasBridgeInLeft(1)).isTrue();
             assertThat(line.hasBridgeInLeft(2)).isFalse();
         }
@@ -71,9 +75,12 @@ class LineTest {
         @DisplayName("오른쪽에 연결된 다리가 있는지")
         void hasBridgeInRightTest() {
             //given
-            Line line = new Line(List.of(Bridge.EXIST, Bridge.EMPTY));
+            Line line = Line.from(3);
 
             //when
+            line.generate(new TestGenerator(List.of(true, false)));
+
+            //then
             assertThat(line.hasBridgeInRight(0)).isTrue();
             assertThat(line.hasBridgeInRight(1)).isFalse();
         }

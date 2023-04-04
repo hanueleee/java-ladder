@@ -10,7 +10,7 @@ public class Line {
     private static final int LEFTMOST_INDEX = 0;
     private final List<Bridge> bridges;
 
-    public Line(List<Bridge> bridges) {
+    private Line(List<Bridge> bridges) {
         this.bridges = bridges;
     }
 
