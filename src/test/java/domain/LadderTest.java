@@ -17,13 +17,12 @@ public class LadderTest {
         void createLadderWithEmptyLines() {
             //given
             int personCount = 5;
-            String ladderHeight = "3";
-            Height height = Height.from(ladderHeight);
+            Height height = Height.from(3);
             Ladder ladder = Ladder.of(height, personCount);
 
             //when
             //then
-            assertThat(ladder.calculateTotalHeight()).isEqualTo(Integer.parseInt(ladderHeight));
+            assertThat(ladder.calculateTotalHeight()).isEqualTo(3);
         }
 
         @Test
@@ -31,7 +30,7 @@ public class LadderTest {
         void generateLadder() {
             //given
             int personCount = 5;
-            Height height = Height.from("2");
+            Height height = Height.from(2);
             Ladder ladder = Ladder.of(height, personCount);
 
             //when

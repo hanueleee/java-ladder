@@ -1,5 +1,6 @@
 package view;
 
+import exception.ErrorCode;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -30,9 +31,10 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    public String requestHeight() {
+    public int requestHeight() {
         System.out.println(System.lineSeparator() + REQUEST_LADDER_HEIGHT);
-        return scanner.nextLine();
+        String inputHeight = scanner.nextLine();
+        return Integer.parseInt(inputHeight);
     }
 
     public String requestShowingName() {
